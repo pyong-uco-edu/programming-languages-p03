@@ -53,14 +53,20 @@ while line != "": # Python returns empty string on EOF
             stack.push(letter)
         # Check for Right
         elif letter == ')' or letter == ']' or letter == '}':
-            poppedChar = stack.pop()
-            if poppedChar != "(" and letter == ")":
-                isBalanced = False
-            if poppedChar != "[" and letter == "]":
-                isBalanced = False
-            if poppedChar != "{" and letter == "}":
+            if stack.len() != 0: # check if stack is empty
+                poppedChar = stack.pop()
+                if poppedChar != "(" and letter == ")":
+                    isBalanced = False
+                if poppedChar != "[" and letter == "]":
+                    isBalanced = False
+                if poppedChar != "{" and letter == "}":
+                    isBalanced = False
+            elif stack.len() == 0:
                 isBalanced = False
 
+    if stack.len() != 0:
+        isBalanced = False
+        
     outfile.write("%s" % (line[:-1])) # write string except for last char
     line = infile.readline()
 
@@ -70,6 +76,8 @@ while line != "": # Python returns empty string on EOF
     else:
         outfile.write("%s" % (" is not balanced.\n"))
         isBalanced = True
+
+    stack.clear()
 
 outfile.close()
 infile.close()
