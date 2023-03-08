@@ -71,6 +71,8 @@ while line != "": # Python returns empty string on EOF
                 outfile.write("%s" % (" is balanced.\n"))
             else:
                 outfile.write("%s" % (" is not balanced.\n"))
+            
+            ifBalanced = True
 
 outfile.close()
 infile.close()
