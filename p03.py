@@ -60,19 +60,16 @@ while line != "": # Python returns empty string on EOF
                 isBalanced = False
             if poppedChar != "{" and letter == "}":
                 isBalanced = False
-        elif letter == '\n':
-            print('letter is \\n')
-            # Write what is Read
-            outfile.write("%s" % (line[:-1])) # write string except for last char
-            line = infile.readline()
 
-            # Output Results
-            if isBalanced:
-                outfile.write("%s" % (" is balanced.\n"))
-            else:
-                outfile.write("%s" % (" is not balanced.\n"))
-            
-            ifBalanced = True
+    outfile.write("%s" % (line[:-1])) # write string except for last char
+    line = infile.readline()
+
+    # Output Results
+    if isBalanced:
+        outfile.write("%s" % (" is balanced.\n"))
+    else:
+        outfile.write("%s" % (" is not balanced.\n"))
+        isBalanced = True
 
 outfile.close()
 infile.close()
