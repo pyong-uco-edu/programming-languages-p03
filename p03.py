@@ -45,37 +45,32 @@ outfile = open(outfile, "w")
 line = infile.readline()
 isBalanced = True
 
-while line != "":
+while line != "": # Python returns empty string on EOF
     # Read Chars
     for letter in line:
         # Check for Left
         if letter == '(' or letter == '[' or letter == '{':
             stack.push(letter)
-            # print("push: " + letter)
         # Check for Right
         elif letter == ')' or letter == ']' or letter == '}':
             poppedChar = stack.pop()
-            # print("match: " + letter)
-            # print("pop: " + poppedChar)
             if poppedChar != "(" and letter == ")":
-                # print(poppedChar + " " + letter)
                 isBalanced = False
             if poppedChar != "[" and letter == "]":
-                # print(poppedChar + " " + letter)
                 isBalanced = False
             if poppedChar != "{" and letter == "}":
-                # print(poppedChar + " " + letter)
                 isBalanced = False
+        elif letter == '\n':
+            print('letter is \\n')
+            # Write what is Read
+            outfile.write("%s" % (line[:-1])) # write string except for last char
+            line = infile.readline()
 
-    # Write what is Read
-    outfile.write("%s" % (line))
-    line = infile.readline()
-
-# Output Results
-if isBalanced:
-    outfile.write("%s" % (" is balanced."))
-else:
-    outfile.write("%s" % (" is not balanced."))
+            # Output Results
+            if isBalanced:
+                outfile.write("%s" % (" is balanced.\n"))
+            else:
+                outfile.write("%s" % (" is not balanced.\n"))
 
 outfile.close()
 infile.close()
