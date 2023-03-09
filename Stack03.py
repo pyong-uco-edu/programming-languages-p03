@@ -22,3 +22,9 @@ class Stack:
 
     def pop(self):
         return self.stack.pop()
+    
+    def len(self):
+        return len(self.stack)
+    
+    def clear(self):
+        self.stack = []
