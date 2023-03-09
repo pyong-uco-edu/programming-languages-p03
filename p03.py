@@ -66,8 +66,11 @@ while line != "": # Python returns empty string on EOF
 
     if stack.len() != 0:
         isBalanced = False
+    
+    if line[-1] == '\n':
+        line = line[:-1] # remove the ending '\n'
         
-    outfile.write("%s" % (line[:-1])) # write string except for last char
+    outfile.write("%s" % (line)) # write string except for last char
     line = infile.readline()
 
     # Output Results
