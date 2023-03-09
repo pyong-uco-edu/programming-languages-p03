@@ -70,7 +70,7 @@ while line != "": # Python returns empty string on EOF
     if line[-1] == '\n':
         line = line[:-1] # remove the ending '\n'
         
-    outfile.write("%s" % (line)) # write string except for last char
+    outfile.write("%s" % (line))
     line = infile.readline()
 
     # Output Results
